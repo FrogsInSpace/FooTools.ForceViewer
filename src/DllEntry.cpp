@@ -16,7 +16,7 @@ extern ClassDesc2* GetForceViewerDesc();
 
 HINSTANCE hInstance;
 
-BOOL WINAPI DllMain(HINSTANCE hinstDLL,ULONG fdwReason,LPVOID lpvReserved)
+BOOL WINAPI DllMain(HINSTANCE hinstDLL, ULONG fdwReason, LPVOID lpvReserved)
 {
 #if (MAX_RELEASE >= 9000)
 	if (fdwReason == DLL_PROCESS_ATTACH)
@@ -38,36 +38,40 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL,ULONG fdwReason,LPVOID lpvReserved)
 	return(TRUE);
 }
 
-__declspec( dllexport ) const TCHAR* LibDescription()
+__declspec(dllexport) const TCHAR* LibDescription()
 {
 	return GetString(IDS_LIBDESCRIPTION);
 }
 
 //TODO: Must change this number when adding a new class
-__declspec( dllexport ) int LibNumberClasses()
+__declspec(dllexport) int LibNumberClasses()
 {
 	return 1;
 }
 
-__declspec( dllexport ) ClassDesc* LibClassDesc(int i)
+__declspec(dllexport) ClassDesc* LibClassDesc(int i)
 {
-	switch(i) {
-		case 0: return GetForceViewerDesc();
-		default: return 0;
+	switch (i) {
+	case 0: return GetForceViewerDesc();
+	default: return 0;
 	}
 }
 
-__declspec( dllexport ) ULONG LibVersion()
+__declspec(dllexport) ULONG LibVersion()
 {
 	return VERSION_3DSMAX;
 }
 
-TCHAR *GetString(int id)
+TCHAR* GetString(int id)
 {
 	static TCHAR buf[256];
 
 	if (hInstance)
+#if MAX_VERSION_MAJOR < 15
 		return LoadString(hInstance, id, buf, sizeof(buf)) ? buf : NULL;
+#else
+		return LoadString(hInstance, id, buf, _countof(buf)) ? buf : NULL;
+#endif	
 	return NULL;
 }
 

@@ -14,7 +14,11 @@
 #include "ForceViewer.h"
 #include "AboutRollup.h"
 
+#if MAX_RELEASE_R24
+static Matrix3 IdentityMatrix();
+#else
 static Matrix3 IdentityMatrix(TRUE);
+#endif
 
 class ForceViewerCreateCallBack : public CreateMouseCallBack
 {
@@ -122,6 +126,11 @@ class ForceViewerClassDesc : public ClassDesc2 {
 	int 			IsPublic() { return TRUE; }
 	void *			Create(BOOL loading = FALSE) { return new ForceViewer(); }
 	const TCHAR *	ClassName() { return GetString(IDS_FORCEVIEWER_CLASSNAME); }
+
+#if MAX_VERSION_MAJOR >= 24
+	const TCHAR* NonLocalizedClassName() { return ClassName(); }
+#endif
+
 	SClass_ID		SuperClassID() { return HELPER_CLASS_ID; }
 	Class_ID		ClassID() { return FORCEVIEWER_CLASSID; }
 	const TCHAR* 	Category() { return GetString(IDS_CATEGORY); }
@@ -200,6 +209,10 @@ BOOL ForceViewerValidator::IsValidNode(INode* inode)
 static ForceViewerValidator forceViewerValidator;
 
 ///////////////////////////////////////////////////////////////////////////
+
+#if MAX_VERSION_MAJOR >= 15
+#define end p_end
+#endif
 
 static ParamBlockDesc2 forceviewer_pblock
 (
@@ -306,11 +319,14 @@ void ForceViewer::EndEditParams(IObjParam* ip, ULONG flags, Animatable* next)
 	this->ip = NULL;
 }
 
-RefResult ForceViewer::NotifyRefChanged(
-		Interval changeInt,
-		RefTargetHandle hTarget,
-   		PartID& partID,
-   		RefMessage message )
+
+#if MAX_VERSION_MAJOR < 17 //Max 2015
+RefResult ForceViewer::NotifyRefChanged(Interval changeInt, RefTargetHandle hTarget,
+	PartID& partID, RefMessage message)
+#else
+RefResult ForceViewer::NotifyRefChanged(const Interval& changeInt, RefTargetHandle hTarget,
+	PartID& partID, RefMessage message, BOOL propagate)
+#endif
 {
 	switch (message)
 	{

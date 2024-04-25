@@ -77,13 +77,29 @@ class ForceViewer : public HelperObject {
 
 		// Animatable
 		Class_ID ClassID() { return FORCEVIEWER_CLASSID; }
-		TCHAR *GetObjectName() { return GetString(IDS_FORCEVIEWER_CLASSNAME); }
+		TCHAR *GetObjectName() const { return GetString(IDS_FORCEVIEWER_CLASSNAME); }
+		
+#if MAX_RELEASE_R24
+		void GetClassName(MSTR& s, bool localized) const 
+		{ 
+			s = localized ? GetString(IDS_FORCEVIEWER_CLASSNAME) : _T("ForceViewer");
+		};
+
+#else
 		void GetClassName(TSTR& s) { s = GetObjectName(); }
+#endif
+		
+		
 		void DeleteThis() { delete this; }
 
 		int NumSubs() { return 1; }
 		Animatable* SubAnim(int i) { return pblock; }
-		TSTR SubAnimName(int i) { return TSTR(GetString(IDS_PARAMETERS)); }
+
+#if MAX_RELEASE_R24
+		TSTR SubAnimName(int i, BOOL isLocalized) { return TSTR(GetString(IDS_PARAMETERS)); };
+#else
+		TSTR SubAnimName(int i) { return TSTR(GetString(IDS_PARAMETERS)); };
+#endif
 
 		int	NumParamBlocks() { return 1; }
 		IParamBlock2* GetParamBlock(int i) { return pblock; }
@@ -96,7 +112,13 @@ class ForceViewer : public HelperObject {
 		int NumRefs() { return NUM_REFS; }
 		RefTargetHandle GetReference(int i) { return pblock; }
 		void SetReference(int i, RefTargetHandle rtarg) { pblock = (IParamBlock2*)rtarg; }
-		RefResult NotifyRefChanged(Interval changeInt,RefTargetHandle hTarget, PartID& partID, RefMessage message);
+
+#if MAX_VERSION_MAJOR < 17 //Max 2015
+		RefResult NotifyRefChanged(Interval changeInt, RefTargetHandle hTarget, PartID& partID, RefMessage message);
+#else
+		RefResult NotifyRefChanged(const Interval& changeInt, RefTargetHandle hTarget, PartID& partID, RefMessage message, BOOL propagate);
+#endif
+
 
 		// Reference Target
 		RefTargetHandle Clone(RemapDir& remap);

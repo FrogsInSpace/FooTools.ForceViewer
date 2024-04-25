@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,22 +13,20 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDD_FORCEVIEWER DIALOG DISCARDABLE  0, 0, 108, 224
-STYLE WS_CHILD | WS_VISIBLE
-FONT 8, "MS Sans Serif"
+IDD_FORCEVIEWER DIALOG 0, 0, 108, 224
+STYLE DS_SETFONT | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "",IDC_SIZEX_EDIT,"CustEdit",WS_TABSTOP,67,11,26,10
     CONTROL         "",IDC_SIZEY_EDIT,"CustEdit",WS_TABSTOP,67,22,26,10
@@ -36,14 +34,10 @@ BEGIN
     CONTROL         "",IDC_RESX_EDIT,"CustEdit",WS_TABSTOP,67,48,26,10
     CONTROL         "",IDC_RESY_EDIT,"CustEdit",WS_TABSTOP,67,59,26,10
     CONTROL         "",IDC_RESZ_EDIT,"CustEdit",WS_TABSTOP,67,70,26,10
-    CONTROL         "",IDC_VECTORSCALE_EDIT,"CustEdit",WS_TABSTOP,67,184,26,
-                    10
-    CONTROL         "Add",IDC_FORCENODE_ADD,"CustButton",WS_TABSTOP,5,98,47,
-                    12
-    CONTROL         "Remove",IDC_FORCENODE_REMOVE,"CustButton",WS_TABSTOP,53,
-                    98,47,12
-    LISTBOX         IDC_FORCENODES,5,112,95,52,WS_VSCROLL | WS_HSCROLL |
-                    WS_TABSTOP
+    CONTROL         "",IDC_VECTORSCALE_EDIT,"CustEdit",WS_TABSTOP,67,184,26,10
+    CONTROL         "Add",IDC_FORCENODE_ADD,"CustButton",WS_TABSTOP,5,98,47,12
+    CONTROL         "Remove",IDC_FORCENODE_REMOVE,"CustButton",WS_TABSTOP,53,98,47,12
+    LISTBOX         IDC_FORCENODES,5,112,95,52,WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
     CONTROL         "",IDC_SIZEX_SPIN,"SpinnerControl",0x0,94,11,7,10
     LTEXT           "X Size ...................",IDC_STATIC,6,12,60,8
     CONTROL         "",IDC_RESX_SPIN,"SpinnerControl",0x0,94,48,7,10
@@ -62,33 +56,30 @@ BEGIN
     GROUPBOX        "Dimensions",IDC_STATIC,2,0,104,84
     GROUPBOX        "Display",IDC_STATIC,2,172,104,49
     CONTROL         "Display Vector Bases ........",IDC_DISPLAY_VECTORBASES,
-                    "Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,5,
-                    197,96,8
+                    "Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,5,197,96,8
     CONTROL         "Display Lattice ..................",IDC_DISPLAY_LATTICE,
-                    "Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,5,
-                    208,96,8
+                    "Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,5,208,96,8
 END
 
-IDD_ABOUT_BFD DIALOG DISCARDABLE  0, 0, 108, 28
-STYLE WS_CHILD | WS_VISIBLE
-FONT 8, "MS Sans Serif"
+IDD_ABOUT_BFD DIALOG 0, 0, 108, 28
+STYLE DS_SETFONT | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg"
 BEGIN
     GROUPBOX        "",-1,2,0,104,26
     RTEXT           "0000.00.00",IDC_ABOUT_VERSION,63,11,37,8
     RTEXT           "John Burnett",-1,7,11,40,8
 END
 
-IDD_ABOUT_FOO DIALOGEX 0, 0, 108, 58
-STYLE WS_CHILD | WS_VISIBLE
-FONT 8, "MS Sans Serif", 0, 0, 0x1
+IDD_ABOUT_FOO DIALOGEX 0, 0, 108, 75
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     GROUPBOX        "",IDC_STATIC,2,0,104,55
     RTEXT           "0000.00.00",IDC_ABOUT_VERSION,62,27,37,8
-    PUSHBUTTON      "www.fooTOOLS.com",IDC_ABOUT_WEB,6,38,96,13,BS_CENTER |
-                    NOT WS_TABSTOP,WS_EX_STATICEDGE
-    LTEXT           "Version ..............",IDC_STATIC,7,27,54,8
-    CONTROL         101,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE |
-                    SS_SUNKEN,25,8,57,17
+    PUSHBUTTON      "www.fooTOOLS.com",IDC_ABOUT_WEB,6,38,96,13,BS_CENTER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    LTEXT           "Version ..........",IDC_STATIC,7,27,51,8
+    CONTROL         IDD_FORCEVIEWER,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE | SS_SUNKEN,25,8,57,17
+    CTEXT           "3ds Max 2017+ Builds:\nJosef 'spacefrog' Wienerroither",IDC_STATIC,6,54,93,17
 END
 
 
@@ -98,18 +89,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -118,7 +109,6 @@ END
 #endif    // APSTUDIO_INVOKED
 
 
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -141,16 +131,14 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "\0"
-            VALUE "FileVersion", "4.0.0.0\0"
-            VALUE "InternalName", "ForceViewer\0"
-            VALUE "LegalCopyright", "\0"
-            VALUE "OriginalFilename", "ForceViewer.dlo\0"
-            VALUE "ProductName", "3ds max\0"
-            VALUE "ProductVersion", "4.0.0.0\0"
-            VALUE "FileDescription", "Direcly view the effect of spacewarps\0"
-            VALUE "Comments", "TECH: \0"
-            VALUE "LegalTrademarks", "3D Studio MAX, Biped, Character Studio, Heidi, Kinetix and Physique are registered trademarks and 3ds max, combustion, Discreet, DWG Unplugged, DXF, FLI and FLC are trademarks of Autodesk, Inc.\0"
+            VALUE "FileVersion", "4.0.0.0"
+            VALUE "InternalName", "ForceViewer"
+            VALUE "OriginalFilename", "ForceViewer.dlo"
+            VALUE "ProductName", "3ds max"
+            VALUE "ProductVersion", "4.0.0.0"
+            VALUE "FileDescription", "Direcly view the effect of spacewarps"
+            VALUE "Comments", "TECH: "
+            VALUE "LegalTrademarks", "3D Studio MAX, Biped, Character Studio, Heidi, Kinetix and Physique are registered trademarks and 3ds max, combustion, Discreet, DWG Unplugged, DXF, FLI and FLC are trademarks of Autodesk, Inc."
         END
     END
     BLOCK "VarFileInfo"
@@ -159,8 +147,6 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -168,7 +154,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_FORCEVIEWER, DIALOG
     BEGIN
@@ -182,7 +168,7 @@ BEGIN
 
     IDD_ABOUT_FOO, DIALOG
     BEGIN
-        BOTTOMMARGIN, 33
+        BOTTOMMARGIN, 50
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -193,16 +179,34 @@ END
 // Bitmap
 //
 
-IDB_FOOTOOLS            BITMAP  DISCARDABLE     "fooTOOLS_blue.bmp"
+IDB_FOOTOOLS            BITMAP                  "res/fooTOOLS_blue.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUT_FOO AFX_DIALOG_LAYOUT
+BEGIN
+    0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 100, 100
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE DISCARDABLE
+STRINGTABLE
 BEGIN
-    IDS_LIBDESCRIPTION      "Direcly view the effect of spacewarps"
+    IDS_LIBDESCRIPTION      "Directly view the effect of spacewarps"
     IDS_FORCEVIEWER_CLASSNAME "ForceViewer"
     IDS_PARAMETERS          "Parameters"
     IDS_SIZEX               "Size X"
@@ -215,16 +219,16 @@ BEGIN
     IDS_FORCENODES          "Force Nodes"
     IDS_DISPLAY_LATTICE     "Display Lattice"
     IDS_DISPLAY_VECTORBASES "Display Vector Bases"
-    IDS_VERSION             "2007.02.20"
+    IDS_VERSION             "2025.02.01"
 END
 
-STRINGTABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     IDS_CATEGORY_BFD        "BFD Tools"
     IDS_CATEGORY_FOO        "fooTOOLS"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
